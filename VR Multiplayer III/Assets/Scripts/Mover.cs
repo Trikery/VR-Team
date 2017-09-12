@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 public class Mover : NetworkBehaviour {
 
     public static Action</*string,*/ Controller> CallMover;
+    public static GameObject thisDino;
 
     Controller controller;
 
@@ -26,6 +27,8 @@ public class Mover : NetworkBehaviour {
             Destroy(this);
             return;
         }
+
+        thisDino = gameObject;
 
         characterRigid = gameObject.GetComponent<Rigidbody>();
         CallMover += CallMoverHandler;

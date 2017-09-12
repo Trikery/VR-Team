@@ -46,6 +46,8 @@ public class Controller : NetworkBehaviour {
         pulledTrigger = false;
         clicked = false;
 
+        dino = Mover.thisDino;
+
         //_controller.TriggerUnclicked += HandleTriggerUnclicked;
         //_controller.MenuButtonClicked += MenuButtonHandler;
         //following = false;
