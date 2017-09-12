@@ -91,7 +91,8 @@ public class Mover : NetworkBehaviour {
             }
 
             //controls transformations
-            characterRigid.MovePosition(transform.localPosition + transform.TransformDirection(new Vector3(/*controller.touchSpot.x*/0 , 0, forward/*controller.touchSpot.y*/)) * controller.moveSpeed * Time.deltaTime);
+            characterRigid.MovePosition(transform.localPosition + transform.TransformDirection(//new Vector3(/*controller.touchSpot.x*/0 , 0, forward/*controller.touchSpot.y*/)
+                controller.cameraHead.transform.forward) * controller.moveSpeed * Time.deltaTime);
 
             //controls rotation
             newRotate = Mathf.Atan2(controller.device.GetAxis().y, (controller.device.GetAxis().x *-1)) * Mathf.Rad2Deg + 90;

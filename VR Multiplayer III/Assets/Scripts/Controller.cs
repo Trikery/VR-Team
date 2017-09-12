@@ -13,6 +13,7 @@ public class Controller : NetworkBehaviour {
     public Vector2 touchSpot;
     public GameObject dino;
     public GameObject bullet;
+    public GameObject cameraHead;
     public Transform nose;
     public float moveSpeed;
     public float rotateSpeed;
