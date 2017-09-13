@@ -93,7 +93,7 @@ public class Controller : NetworkBehaviour {
     {
         
         touching = true;
-        Shoot.shooter();
+        Mover.CallMover(this);
 
     }
 
@@ -106,7 +106,7 @@ public class Controller : NetworkBehaviour {
     private void HandleTriggerClicked(object sender, ClickedEventArgs e)
     {
         pulledTrigger = true;
-        Mover.CallMover(this);
+        Shoot.shooter();
         //StartCoroutine(ShootGun());
     }
 
