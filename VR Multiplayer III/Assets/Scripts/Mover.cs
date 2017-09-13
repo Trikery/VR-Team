@@ -91,12 +91,12 @@ public class Mover : NetworkBehaviour {
             }
 
             //controls transformations
-            characterRigid.MovePosition(transform.localPosition + transform.TransformDirection(//new Vector3(/*controller.touchSpot.x*/0 , 0, forward/*controller.touchSpot.y*/)
-                controller.cameraHead.transform.forward) * controller.moveSpeed * Time.deltaTime);
+            characterRigid.MovePosition(transform.localPosition + transform.TransformDirection(new Vector3(/*controller.touchSpot.x*/0 , 0, forward/*controller.touchSpot.y*/)
+                ) * controller.moveSpeed * Time.deltaTime);
 
             //controls rotation
-            newRotate = Mathf.Atan2(controller.device.GetAxis().y, (controller.device.GetAxis().x *-1)) * Mathf.Rad2Deg -90;
-            Quaternion tempRotate = Quaternion.Euler(0, newRotate, 0);    
+            newRotate = Mathf.Atan2(controller.device.GetAxis().y, (controller.device.GetAxis().x *-1)) * Mathf.Rad2Deg + 0;
+            Quaternion tempRotate = Quaternion.Euler(0, newRotate + (controller.cameraHead.transform.localEulerAngles.y -90), 0);    
             transform.localRotation = Quaternion.Slerp(transform.rotation, tempRotate, Time.deltaTime * controller.rotateSpeed);
 
         }
@@ -117,18 +117,18 @@ public class Mover : NetworkBehaviour {
 
     }
 
-    IEnumerator ShootGun()
-    {
-        yield return new WaitForFixedUpdate();
+    //IEnumerator ShootGun()
+    //{
+    //    yield return new WaitForFixedUpdate();
 
-        controller.bullet.transform.Translate(Vector3.forward * controller.bulletSpeed * Time.deltaTime);
+    //    controller.bullet.transform.Translate(Vector3.forward * controller.bulletSpeed * Time.deltaTime);
 
-        yield return new WaitForSeconds(1);
+    //    yield return new WaitForSeconds(1);
 
 
-        controller.bullet.transform.position = controller.nose.GetComponent<Transform>().position;
-        controller.bullet.transform.localEulerAngles = controller.nose.localEulerAngles;
-    }
+    //    controller.bullet.transform.position = controller.nose.GetComponent<Transform>().position;
+    //    controller.bullet.transform.localEulerAngles = controller.nose.localEulerAngles;
+    //}
 
     IEnumerator Jump()
     {

@@ -93,7 +93,7 @@ public class Controller : NetworkBehaviour {
     {
         
         touching = true;
-        Mover.CallMover(this);
+        Shoot.shooter();
 
     }
 
