@@ -21,6 +21,7 @@ public class Controller : NetworkBehaviour {
     public float bulletSpeed = 500;
     public float frameCount;
     public float jumpAmount;
+    public float forwardJmpSpeed;
     public bool touching;
     public bool pulledTrigger;
     public bool gripped;
