@@ -46,6 +46,7 @@ public class Mover : NetworkBehaviour {
         {
             //characterRigid.AddForce(Vector3.up * Time.deltaTime * controller.jumpSpeed);
             StartCoroutine(Jump());
+            StartCoroutine(ForwardForce());
             StartCoroutine(JumpCount());
             StartCoroutine(ResetJump());
             jumping = true;
@@ -127,14 +128,20 @@ public class Mover : NetworkBehaviour {
     {
         yield return new WaitForFixedUpdate();
         transform.Translate(Vector3.up * controller.jumpSpeed * Time.deltaTime);
-        characterRigid.MovePosition(transform.localPosition + transform.TransformDirection(new Vector3(0, 0, forward)) * controller.moveSpeed * 2 * Time.deltaTime);
         if (controller.frameCount < controller.jumpAmount)
             StartCoroutine(Jump());
+    }
+    IEnumerator ForwardForce()
+    {
+        characterRigid.MovePosition(transform.localPosition + transform.TransformDirection(new Vector3(0, 0, forward)) * controller.moveSpeed * 4 * Time.deltaTime);
+        yield return new WaitForFixedUpdate();
+        if (jumping)
+            StartCoroutine(ForwardForce());
     }
 
     IEnumerator JumpCount()
     {
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.1f);
         controller.frameCount++;
         if (controller.frameCount < controller.jumpAmount)
             StartCoroutine(JumpCount());
@@ -142,7 +149,7 @@ public class Mover : NetworkBehaviour {
 
     IEnumerator ResetJump()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         controller.frameCount = 0;
         jumping = false;
     }
