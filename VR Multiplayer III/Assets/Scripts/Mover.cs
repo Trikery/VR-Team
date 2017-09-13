@@ -127,12 +127,14 @@ public class Mover : NetworkBehaviour {
     IEnumerator Jump()
     {
         yield return new WaitForFixedUpdate();
-        transform.Translate((Vector3.up * controller.jumpSpeed * Time.deltaTime) + (transform.localPosition + transform.TransformDirection(new Vector3(0, 0, forward)) * controller.moveSpeed * 4));
+        characterRigid.AddForce(Vector3.up * controller.jumpSpeed * Time.deltaTime);
+        //transform.Translate(Vector3.up * controller.jumpSpeed * Time.deltaTime);
         if (controller.frameCount < controller.jumpAmount)
             StartCoroutine(Jump());
     }
     IEnumerator ForwardForce()
     {
+        characterRigid.AddForce(transform.forward * controller.moveSpeed * 400 * Time.deltaTime);
         //characterRigid.MovePosition(transform.localPosition + transform.TransformDirection(new Vector3(0, 0, forward)) * controller.moveSpeed * 4 * Time.deltaTime);
         yield return new WaitForFixedUpdate();
         if (jumping)
