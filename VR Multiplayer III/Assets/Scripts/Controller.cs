@@ -17,7 +17,7 @@ public class Controller : NetworkBehaviour {
     public Transform nose;
     public float moveSpeed;
     public float rotateSpeed;
-    public float jumpSpeed;
+    public float jumpSpeed = 5;
     public float bulletSpeed = 500;
     public float frameCount;
     public float jumpAmount;
