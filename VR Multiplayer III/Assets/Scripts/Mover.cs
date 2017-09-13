@@ -44,6 +44,9 @@ public class Mover : NetworkBehaviour {
         if(controller.clicked)
         {
             StartCoroutine(Jump());
+            StartCoroutine(JumpCount());
+            StartCoroutine(ResetJump());
+
         }
         if(controller.pulledTrigger)
         {
@@ -117,26 +120,28 @@ public class Mover : NetworkBehaviour {
 
     }
 
-    //IEnumerator ShootGun()
-    //{
-    //    yield return new WaitForFixedUpdate();
-
-    //    controller.bullet.transform.Translate(Vector3.forward * controller.bulletSpeed * Time.deltaTime);
-
-    //    yield return new WaitForSeconds(1);
-
-
-    //    controller.bullet.transform.position = controller.nose.GetComponent<Transform>().position;
-    //    controller.bullet.transform.localEulerAngles = controller.nose.localEulerAngles;
-    //}
-
     IEnumerator Jump()
     {
         yield return new WaitForFixedUpdate();
         transform.Translate(Vector3.up * controller.jumpSpeed * Time.deltaTime);
-        if (controller.clicked == true && controller.frameCount < controller.jumpAmount)
+        if (controller.frameCount < controller.jumpAmount)
             StartCoroutine(Jump());
     }
+
+    IEnumerator JumpCount()
+    {
+        yield return new WaitForSeconds(.5f);
+        controller.frameCount++;
+        if (controller.frameCount < controller.jumpAmount)
+            StartCoroutine(JumpCount());
+    }
+
+    IEnumerator ResetJump()
+    {
+        yield return new WaitForSeconds(2);
+        controller.frameCount = 0;
+    }
+
 }
 
 
