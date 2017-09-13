@@ -95,7 +95,7 @@ public class Mover : NetworkBehaviour {
                 controller.cameraHead.transform.forward * -1) * controller.moveSpeed * Time.deltaTime);
 
             //controls rotation
-            newRotate = Mathf.Atan2(controller.device.GetAxis().y, (controller.device.GetAxis().x *-1)) * Mathf.Rad2Deg - 90;
+            newRotate = Mathf.Atan2(controller.device.GetAxis().y, (controller.device.GetAxis().x *-1)) * Mathf.Rad2Deg +90;
             Quaternion tempRotate = Quaternion.Euler(0, newRotate, 0);    
             transform.localRotation = Quaternion.Slerp(transform.rotation, tempRotate, Time.deltaTime * controller.rotateSpeed);
 
