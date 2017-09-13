@@ -7,8 +7,9 @@ using UnityEngine.Networking;
 public class Shoot : NetworkBehaviour {
     public static Action shooter;
 
-    public Rigidbody curentBullet;
+    public Rigidbody currentBullet;
     public float bulletSpeed;
+    
 
     //public GameObject gun;
     private void Start()
@@ -26,15 +27,16 @@ public class Shoot : NetworkBehaviour {
     {
         //if (!BulletPool.shooting)
         //{
-            curentBullet = BulletPool.bullets[0];
-            BulletPool.bullets.Remove(curentBullet);
-            curentBullet.transform.position = transform.position + (transform.forward * 2);
-            curentBullet.transform.rotation = transform.rotation;
-            curentBullet.transform.localEulerAngles = transform.localEulerAngles;
-            curentBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * bulletSpeed * 10);
+            currentBullet = BulletPool.bullets[0];
+            currentBullet.GetComponent<Bullet>().TimeOutStarter();
+            BulletPool.bullets.Remove(currentBullet);
+            currentBullet.transform.position = transform.position + (transform.forward * 2);
+            currentBullet.transform.rotation = transform.rotation;
+            currentBullet.transform.localEulerAngles = transform.localEulerAngles;
+            currentBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * bulletSpeed * 10);
             if (BulletPool.bullets != null)
             {
-                curentBullet = BulletPool.bullets[0];
+                currentBullet = BulletPool.bullets[0];
             }
             else
                 print("Not Enough Bullets");
