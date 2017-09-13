@@ -16,6 +16,7 @@ public class Mover : NetworkBehaviour {
     private Vector3 moveRotate;
     private Rigidbody characterRigid;
     private float forward;
+    private bool jumping;
 
 
     // Use this for initialization
@@ -29,7 +30,7 @@ public class Mover : NetworkBehaviour {
         }
 
         thisDino = gameObject;
-
+        jumping = false;
         characterRigid = gameObject.GetComponent<Rigidbody>();
         CallMover += CallMoverHandler;
     }
@@ -41,11 +42,12 @@ public class Mover : NetworkBehaviour {
         {
             StartCoroutine(MoveController());
         }
-        if(controller.clicked)
+        if(controller.clicked && !jumping)
         {
             StartCoroutine(Jump());
             StartCoroutine(JumpCount());
             StartCoroutine(ResetJump());
+            jumping = true;
 
         }
         if(controller.pulledTrigger)
@@ -140,6 +142,7 @@ public class Mover : NetworkBehaviour {
     {
         yield return new WaitForSeconds(2);
         controller.frameCount = 0;
+        jumping = false;
     }
 
 }
