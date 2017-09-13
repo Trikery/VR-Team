@@ -127,7 +127,7 @@ public class Mover : NetworkBehaviour {
     IEnumerator Jump()
     {
         yield return new WaitForFixedUpdate();
-        transform.Translate(Vector3.up + (transform.localPosition + transform.TransformDirection(new Vector3(0, 0, forward)) * controller.moveSpeed * 4) * controller.jumpSpeed * Time.deltaTime);
+        transform.Translate((Vector3.up * controller.jumpSpeed * Time.deltaTime) + (transform.localPosition + transform.TransformDirection(new Vector3(0, 0, forward)) * controller.moveSpeed * 4));
         if (controller.frameCount < controller.jumpAmount)
             StartCoroutine(Jump());
     }
