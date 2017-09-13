@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114472388334303500}
   - component: {fileID: 114861250288185230}
   - component: {fileID: 114798412787530862}
+  - component: {fileID: 114750116394792516}
   m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
@@ -42,6 +43,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4906649267596314}
+  - component: {fileID: 114248781170102810}
   m_Layer: 0
   m_Name: Nose
   m_TagString: Untagged
@@ -275,6 +277,38 @@ MonoBehaviour:
     i15: 82
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &114248781170102810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1306879159351356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 163
+    i1: 81
+    i2: 162
+    i3: 181
+    i4: 96
+    i5: 82
+    i6: 9
+    i7: 148
+    i8: 170
+    i9: 90
+    i10: 177
+    i11: 235
+    i12: 89
+    i13: 253
+    i14: 6
+    i15: 82
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114472388334303500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -349,6 +383,19 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114750116394792516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235996403604436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa7dc92199c6b74bbe35382802a7d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curentBullet: {fileID: 0}
+  bulletSpeed: 0
 --- !u!114 &114798412787530862
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -19,15 +19,16 @@ public class Shoot : NetworkBehaviour {
         }
 
         shooter += ShooterHandler;
+        bulletSpeed = 100;
     }
 
     private void ShooterHandler()
     {
-        if (!BulletPool.shooting)
-        {
+        //if (!BulletPool.shooting)
+        //{
             curentBullet = BulletPool.bullets[0];
             BulletPool.bullets.Remove(curentBullet);
-            curentBullet.transform.position = transform.position;
+            curentBullet.transform.position = transform.position + (transform.forward * 2);
             curentBullet.transform.rotation = transform.rotation;
             curentBullet.transform.localEulerAngles = transform.localEulerAngles;
             curentBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * bulletSpeed * 10);
@@ -37,6 +38,6 @@ public class Shoot : NetworkBehaviour {
             }
             else
                 print("Not Enough Bullets");
-        }
+        //}
     }
 }
