@@ -44,7 +44,7 @@ public class Mover : NetworkBehaviour {
         }
         if(controller.clicked && !jumping)
         {
-            characterRigid.AddForce(Vector3.up * Time.deltaTime * controller.jumpSpeed);
+            //characterRigid.AddForce(Vector3.up * Time.deltaTime * controller.jumpSpeed);
             StartCoroutine(Jump());
             StartCoroutine(JumpCount());
             StartCoroutine(ResetJump());
@@ -126,7 +126,7 @@ public class Mover : NetworkBehaviour {
     IEnumerator Jump()
     {
         yield return new WaitForFixedUpdate();
-        //transform.Translate(Vector3.up * controller.jumpSpeed * Time.deltaTime);
+        transform.Translate(Vector3.up * controller.jumpSpeed * Time.deltaTime);
         characterRigid.MovePosition(transform.localPosition + transform.TransformDirection(new Vector3(0, 0, forward)) * controller.moveSpeed * 2 * Time.deltaTime);
         if (controller.frameCount < controller.jumpAmount)
             StartCoroutine(Jump());
@@ -134,7 +134,7 @@ public class Mover : NetworkBehaviour {
 
     IEnumerator JumpCount()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
         controller.frameCount++;
         if (controller.frameCount < controller.jumpAmount)
             StartCoroutine(JumpCount());
@@ -142,7 +142,7 @@ public class Mover : NetworkBehaviour {
 
     IEnumerator ResetJump()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         controller.frameCount = 0;
         jumping = false;
     }
