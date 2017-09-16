@@ -159,5 +159,50 @@ public class Controller : NetworkBehaviour {
     //        StartCoroutine(Jump());
     //}
 
+
+
+    //For the sake of debuging on a non VR controller
+
+
+    void Update()
+    {
+        if(Input.GetButtonDown("Horizontal")|| Input.GetButtonDown("Vertical"))
+        {
+            touching = true;
+            Mover.CallMover(this); 
+        }
+        if (!Input.GetButtonDown("Horizontal")&& !Input.GetButtonDown("Vertical"))
+        {
+            touching = false;
+        }
+        if(Input.GetKeyDown("Space"))
+        {
+            clicked = true;
+            Mover.CallMover(this);
+        }
+        if (Input.GetKeyUp("Space"))
+        {
+            clicked = false;
+        }
+        if(Input.GetButtonDown("Fire1"))
+        {
+            pulledTrigger = true;
+            Shoot.shooter();
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            pulledTrigger = false;
+        }
+        if(Input.GetButtonDown("Fire2"))
+        {
+            gripped = true;
+            Mover.CallMover(this);
+        }
+        if (Input.GetButtonUp("Fire2"))
+        {
+            gripped = false;
+        }
+    }
+
     
 }
