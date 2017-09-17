@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public class Mover : NetworkBehaviour {
 
-    public static Action</*string,*/ Controller> CallMover;
+    public static Action<Controller> CallMover;
     public static GameObject thisDino;
 
     Controller controller;
@@ -17,6 +17,7 @@ public class Mover : NetworkBehaviour {
     private Rigidbody _characterRigid;
     private float _forward;
     private bool _jumping;
+    private float leftRight;
 
 
     // Use this for initialization
@@ -57,7 +58,22 @@ public class Mover : NetworkBehaviour {
             {
                 StartCoroutine(MoveController());
             }
-            
+            if (controller.clicked && !_jumping)
+            {
+                if (controller.device.GetAxis().y > .5f)
+                {
+                    StartCoroutine(ForwardJump());
+                }
+                if (controller.device.GetAxis().y < -.5f)
+                {
+                    StartCoroutine(BackJump());
+                }
+                if (controller.device.GetAxis().x > .5f || controller.device.GetAxis().x < -.5f)
+                {
+                    StartCoroutine(SideJump());
+                }
+            }
+
         }
         
         if(controller.pulledTrigger)
@@ -123,8 +139,11 @@ public class Mover : NetworkBehaviour {
             transform.rotation = Quaternion.Slerp(transform.rotation, _focusRotate, Time.deltaTime * controller.rotateSpeed);
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
             //controlls transformation
-            _characterRigid.MovePosition(transform.localPosition + transform.TransformDirection
+            if (!_jumping)
+            {
+                _characterRigid.MovePosition(transform.localPosition + transform.TransformDirection
                 (new Vector3(controller.touchSpot.x, 0, controller.touchSpot.y)) * controller.moveSpeed * Time.deltaTime);
+            }
 
         }
         if (controller.touching && !controller.clicked)
@@ -136,10 +155,41 @@ public class Mover : NetworkBehaviour {
     {
         yield return new WaitForFixedUpdate();
         _characterRigid.AddForce(Vector3.up * controller.jumpSpeed * Time.deltaTime);
-        _characterRigid.AddForce(transform.forward * controller.moveSpeed * controller.forwardJmpSpeed * Time.deltaTime);
+        //_characterRigid.AddForce(transform.forward * controller.moveSpeed * controller.forwardJmpSpeed * Time.deltaTime);
         //transform.Translate(Vector3.up * controller.jumpSpeed * Time.deltaTime);
         if (controller.frameCount < controller.jumpAmount)
             StartCoroutine(Jump());
+    }
+
+    IEnumerator ForwardJump()
+    {
+        yield return new WaitForFixedUpdate();
+        _characterRigid.AddForce(Vector3.up * controller.jumpSpeed * Time.deltaTime);
+        _characterRigid.AddForce(transform.forward * controller.moveSpeed * controller.forwardJmpSpeed * Time.deltaTime);
+        if (controller.frameCount < controller.jumpAmount)
+            StartCoroutine(ForwardJump());
+    }
+
+    IEnumerator BackJump()
+    {
+        yield return new WaitForFixedUpdate();
+        _characterRigid.AddForce(Vector3.up * controller.jumpSpeed * Time.deltaTime);
+        _characterRigid.AddForce((transform.forward * -1)* controller.moveSpeed * controller.forwardJmpSpeed * Time.deltaTime);
+        if (controller.frameCount < controller.jumpAmount)
+            StartCoroutine(BackJump());
+    }
+
+    IEnumerator SideJump()
+    {
+        yield return new WaitForFixedUpdate();
+        _characterRigid.AddForce(Vector3.up * controller.jumpSpeed * Time.deltaTime);
+        if (controller.device.GetAxis().x <= 0)
+            leftRight = 1;
+        if (controller.device.GetAxis().x > 0)
+            leftRight = -1;
+        _characterRigid.AddForce((transform.right * leftRight)* controller.moveSpeed * controller.forwardJmpSpeed * Time.deltaTime);
+        if (controller.frameCount < controller.jumpAmount)
+            StartCoroutine(SideJump());
     }
     //IEnumerator ForwardForce()
     //{

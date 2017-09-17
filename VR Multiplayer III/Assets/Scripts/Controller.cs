@@ -164,7 +164,7 @@ public class Controller : NetworkBehaviour {
     //For the sake of debuging on a non VR controller
 
 
-    void Update()
+    /*void Update()
     {
         if(Input.GetButtonDown("Horizontal")|| Input.GetButtonDown("Vertical"))
         {
@@ -202,7 +202,7 @@ public class Controller : NetworkBehaviour {
         {
             gripped = false;
         }
-    }
+    }*/
 
     
 }
