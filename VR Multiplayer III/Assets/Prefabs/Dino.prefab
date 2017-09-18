@@ -204,7 +204,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!54 &54475922433009808
 Rigidbody:
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa7dc92199c6b74bbe35382802a7d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curentBullet: {fileID: 0}
+  currentBullet: {fileID: 0}
   bulletSpeed: 0
 --- !u!114 &114798412787530862
 MonoBehaviour:

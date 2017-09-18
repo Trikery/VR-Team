@@ -16,15 +16,25 @@ public class LockFocus : MonoBehaviour {
     public float rayTimeLimit = 2f;
     public Vector3 rayOrig;
 
+    Material lineMat;
+
     public void Start()
     {
         setFocus += SetFocusHandler;
         line = gameObject.AddComponent<LineRenderer>();
         line.enabled = false;
+        line.startWidth = 0;
+        line.endWidth = .5f;
+        line.material = lineMat;
+        line.startColor = Color.clear;
+        line.endColor = Color.green;
+
+
     }
 
     private void SetFocusHandler(Controller _script)
     {
+        canRaycast = true;
         _controller = _script;
         StartCoroutine(RaycastWeapon());
         StartCoroutine(RaycastCounter());
@@ -34,14 +44,16 @@ public class LockFocus : MonoBehaviour {
     {
         //Ray ray = new Ray(transform.position, transform.up * -1);
         rayOrig = transform.position;
-        if (Physics.Raycast(rayOrig, transform.forward, out rayHit))
+        //Ray ray = new Ray(transform.position, transform.up * -1);
+        if (Physics.Raycast(transform.position, transform.up * -1, out rayHit))
         {
+            
             line.enabled = true;
             line.SetPosition(0, rayOrig);
             line.SetPosition(1, rayHit.point);
-            _controller.focus = rayHit.collider.GetComponent<Transform>();
+            //_controller.focus = rayHit.collider.GetComponent<Transform>();
 
-            if(rayHit.collider.GetComponent<Rigidbody>())
+            if(rayHit.rigidbody != null)
             {
                 _controller.focus = rayHit.collider.GetComponent<Transform>();
             }
