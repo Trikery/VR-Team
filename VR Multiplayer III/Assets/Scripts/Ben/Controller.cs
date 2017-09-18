@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+//using UnityEngine.Networking;
 
 
-public class Controller : NetworkBehaviour {
+public class Controller : MonoBehaviour {
 
     public SteamVR_TrackedController _controller;
     public SteamVR_TrackedObject trackedObject;
@@ -26,6 +26,7 @@ public class Controller : NetworkBehaviour {
     public bool touching;
     public bool pulledTrigger;
     public bool gripped;
+    public bool meleeMode;
 
     public Transform focus;
     
@@ -45,14 +46,17 @@ public class Controller : NetworkBehaviour {
         _controller.PadUnclicked += RHandlePadClickUp;
         _controller.Gripped += HandleGripped;
         _controller.Ungripped += HandleUngripped;
+        _controller.MenuButtonClicked += MenuButtonHandler;
+        //_controller.MenuButtonUnclicked += MenuButtonUnclicked;
         touching = false;
         pulledTrigger = false;
         clicked = false;
+        meleeMode = true;
 
         dino = Mover.thisDino;
 
         //_controller.TriggerUnclicked += HandleTriggerUnclicked;
-        //_controller.MenuButtonClicked += MenuButtonHandler;
+        
         //following = false;
         //melee = false;
         //_controller.Ungripped += HandleUngripped;            
@@ -103,14 +107,36 @@ public class Controller : NetworkBehaviour {
     private void HandleTriggerUnclicked(object sender, ClickedEventArgs e)
     {
         pulledTrigger = false;
+        if(meleeMode)
+        {
+            BaseMelee.QuickAttack();
+        }
 
     }
 
     private void HandleTriggerClicked(object sender, ClickedEventArgs e)
     {
         pulledTrigger = true;
-        Shoot.shooter();
-        //StartCoroutine(ShootGun());
+        if(meleeMode)
+        {
+            BaseMelee.MeleeAttack();
+        }
+        if (!meleeMode)
+        {
+            Shoot.shooter();
+        }
+    }
+
+    private void MenuButtonHandler(object sender, ClickedEventArgs e)
+    {
+        if(meleeMode)
+        {
+            meleeMode = false;
+        }
+        if(!meleeMode)
+        {
+            meleeMode = true;
+        }
     }
 
     private void OnDisable()
