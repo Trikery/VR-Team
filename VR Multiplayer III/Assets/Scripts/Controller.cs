@@ -67,7 +67,7 @@ public class Controller : NetworkBehaviour {
     private void HandleGripped(object sender, ClickedEventArgs e)
     {
         gripped = true;
-        //WeaponLockOn_KH.setFocus();
+        LockFocus.setFocus(this);
         Mover.CallMover(this);
     }
 

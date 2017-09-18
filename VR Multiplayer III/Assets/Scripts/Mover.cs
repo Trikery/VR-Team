@@ -121,11 +121,14 @@ public class Mover : NetworkBehaviour {
 
         if (controller.gripped)
         {
-            //controlls rotation
-            _focusRotate = Quaternion.LookRotation(controller.focus.position - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, _focusRotate, Time.deltaTime * controller.rotateSpeed);
-            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
-            //controlls transformation
+            if (controller.focus != null)
+            {
+                //controlls rotation
+                _focusRotate = Quaternion.LookRotation(controller.focus.position - transform.position);
+                transform.rotation = Quaternion.Slerp(transform.rotation, _focusRotate, Time.deltaTime * controller.rotateSpeed);
+                transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+            }
+                //controlls transformation
             if (!_jumping)
             {
                 _characterRigid.MovePosition(transform.localPosition + transform.TransformDirection
@@ -177,7 +180,6 @@ public class Mover : NetworkBehaviour {
 
         _characterRigid.AddForce((transform.right * leftRight)* controller.moveSpeed * controller.forwardJmpSpeed * Time.deltaTime);
         transform.LookAt(controller.focus);
-        print(controller.focus);
 
         if (controller.frameCount < controller.jumpAmount)
             StartCoroutine(SideJump());
