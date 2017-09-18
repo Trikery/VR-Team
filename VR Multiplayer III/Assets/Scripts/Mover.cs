@@ -45,7 +45,7 @@ public class Mover : NetworkBehaviour {
         {
             if (!controller.gripped)
             {
-                //characterRigid.AddForce(Vector3.up * Time.deltaTime * controller.jumpSpeed);
+                
                 StartCoroutine(Jump());
                 // StartCoroutine(ForwardForce());
                 StartCoroutine(JumpCount());
@@ -56,10 +56,8 @@ public class Mover : NetworkBehaviour {
         }
         if (controller.touching || controller.gripped)
         {
-            if (!controller.clicked && !_jumping)
-            {
-                StartCoroutine(MoveController());
-            }
+             StartCoroutine(MoveController());
+      
             if (controller.clicked && !_jumping)
             {
                 if (controller.device.GetAxis().y > .5f)
@@ -81,26 +79,7 @@ public class Mover : NetworkBehaviour {
                     StartCoroutine(ResetJump());
                 }
             }
-
         }
-        
-        if(controller.pulledTrigger)
-        {
-            //StartCoroutine(ShootGun());
-
-        }
-            //switch(command)
-        //{
-        //    case "Touching":
-                
-        //        StartCoroutine(MoveController());
-        //        break;
-        //    case "Not Touching":
-        //        break;
-        //    default:
-        //        return;
-
-        //}
     }
 
 
@@ -134,8 +113,8 @@ public class Mover : NetworkBehaviour {
                 ) * controller.moveSpeed * Time.deltaTime);
 
             //controls rotation
-            _newRotate = Mathf.Atan2(controller.device.GetAxis().y * -1, (controller.device.GetAxis().x )) * Mathf.Rad2Deg;
-            Quaternion tempRotate = Quaternion.Euler(0, _newRotate - ((controller.cameraHead.transform.localEulerAngles.y -90) * -1), 0);    
+            _newRotate = Mathf.Atan2(controller.device.GetAxis().y, (controller.device.GetAxis().x * -1)) * Mathf.Rad2Deg;
+            Quaternion tempRotate = Quaternion.Euler(0, _newRotate - ((controller.cameraHead.transform.localEulerAngles.y -90 + controller.vrRig.localEulerAngles.y) *-1), 0);    
             transform.localRotation = Quaternion.Slerp(transform.rotation, tempRotate, Time.deltaTime * controller.rotateSpeed);
 
         }
@@ -192,22 +171,18 @@ public class Mover : NetworkBehaviour {
         yield return new WaitForFixedUpdate();
         _characterRigid.AddForce(Vector3.up * controller.jumpSpeed * Time.deltaTime);
         if (controller.device.GetAxis().x <= 0)
-            leftRight = 1;
-        if (controller.device.GetAxis().x > 0)
             leftRight = -1;
+        if (controller.device.GetAxis().x > 0)
+            leftRight = 1;
+
         _characterRigid.AddForce((transform.right * leftRight)* controller.moveSpeed * controller.forwardJmpSpeed * Time.deltaTime);
+        transform.LookAt(controller.focus);
+        print(controller.focus);
+
         if (controller.frameCount < controller.jumpAmount)
             StartCoroutine(SideJump());
     }
-    //IEnumerator ForwardForce()
-    //{
-        
-    //    //characterRigid.MovePosition(transform.localPosition + transform.TransformDirection(new Vector3(0, 0, forward)) * controller.moveSpeed * 4 * Time.deltaTime);
-    //    yield return new WaitForFixedUpdate();
-    //    if (jumping)
-    //        StartCoroutine(ForwardForce());
-    //}
-
+    
     IEnumerator JumpCount()
     {
         yield return new WaitForSeconds(.1f);

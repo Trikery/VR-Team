@@ -15,6 +15,7 @@ public class Controller : NetworkBehaviour {
     public GameObject bullet;
     public GameObject cameraHead;
     public Transform nose;
+    public Transform vrRig;
     public float moveSpeed;
     public float rotateSpeed;
     public float jumpSpeed = 5;
