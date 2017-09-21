@@ -19,6 +19,8 @@ public class Controller : MonoBehaviour {
 
     public List<Transform> allFocus;
 
+    public static Action<GameObject> AddAsTargetUI;
+
     public float moveSpeed;
     public float rotateSpeed;
     public float jumpSpeed = 5;
@@ -76,6 +78,7 @@ public class Controller : MonoBehaviour {
         {
             focus.GetComponent<Material>().SetFloat("_OutlineWidth", 1);
         }
+        AddAsTargetUI(null);
     }
 
     private void HandleGripped(object sender, ClickedEventArgs e)
@@ -83,7 +86,9 @@ public class Controller : MonoBehaviour {
         gripped = true;
         WeaponLockOn_KH.setFocus(this);
         Mover.CallMover(this);
-        
+        AddAsTargetUI(focus.gameObject);
+
+
     }
 
     
