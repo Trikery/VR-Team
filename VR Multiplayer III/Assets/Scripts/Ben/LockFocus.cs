@@ -7,6 +7,8 @@ public class LockFocus : MonoBehaviour {
 
     public static Action<Controller> setFocus;
 
+    public static List<Transform> allFocus;
+
     private Controller _controller;
 
     LineRenderer line;
@@ -36,26 +38,28 @@ public class LockFocus : MonoBehaviour {
     {
         canRaycast = true;
         _controller = _script;
+        allFocus.Clear();
         StartCoroutine(RaycastWeapon());
         StartCoroutine(RaycastCounter());
     }
 
     IEnumerator RaycastWeapon()
     {
-        //Ray ray = new Ray(transform.position, transform.up * -1);
+        
         rayOrig = transform.position;
-        //Ray ray = new Ray(transform.position, transform.up * -1);
+        
         if (Physics.Raycast(transform.position, transform.up * -1, out rayHit))
         {
             
             line.enabled = true;
             line.SetPosition(0, rayOrig);
             line.SetPosition(1, rayHit.point);
-            //_controller.focus = rayHit.collider.GetComponent<Transform>();
+            
 
             if(rayHit.rigidbody != null)
             {
                 _controller.focus = rayHit.collider.GetComponent<Transform>();
+                allFocus.Add(rayHit.transform);
             }
         }
         yield return new WaitForFixedUpdate();
