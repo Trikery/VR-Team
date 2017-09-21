@@ -6,7 +6,6 @@ using System;
 public class WeaponLockOn_KH : MonoBehaviour {
 
 	public static Action <Controller> setFocus;
-	public static List <Transform> allFocus;
 
 	private Controller _controller;
 
@@ -28,22 +27,22 @@ public class WeaponLockOn_KH : MonoBehaviour {
 	private void SetFocusHandler(Controller _getFocus){
 		canRaycast = true;
 		_controller = _getFocus;
-		allFocus.Clear ();
+		_controller.allFocus.Clear ();
 		StartCoroutine (RaycastWeapon ());
 		StartCoroutine (RaycastCounter ());
 	}
 
+	//
 	IEnumerator RaycastWeapon(){
-		//Ray ray = new Ray(transform.position, transform.up * -1);
 
 		if (Physics.Raycast (transform.position, transform.up * -1, out rayHit)) {
 			line.SetPosition (0, transform.position);
 			line.SetPosition (1, rayHit.point);
 			line.enabled = true;
 
-			if (rayHit.rigidbody != null) {
+			if (rayHit.collider.GetComponent<Shader>() == _controller.Outlineable) {
 				_controller.focus = rayHit.collider.GetComponent<Transform> ();
-				allFocus.Add (_controller.focus);
+				_controller.allFocus.Add (_controller.focus);
 			}
 		}
 		yield return new WaitForFixedUpdate ();
