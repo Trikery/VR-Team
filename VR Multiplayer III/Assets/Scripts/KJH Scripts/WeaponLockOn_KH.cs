@@ -41,8 +41,15 @@ public class WeaponLockOn_KH : MonoBehaviour {
 			line.enabled = true;
 
 			if (rayHit.collider.GetComponent<Shader>() == _controller.Outlineable) {
-				_controller.focus = rayHit.collider.GetComponent<Transform> ();
-				_controller.allFocus.Add (_controller.focus);
+				if (_controller.focus != rayHit.collider.GetComponent<Transform> ()) {
+					_controller.focus.GetComponent<Material> ().SetFloat ("_OutlineWidth", 1);
+					_controller.focus = rayHit.collider.GetComponent<Transform> ();
+					_controller.focus.GetComponent<Material> ().SetFloat ("_OutlineWidth", _controller.outlineSize);
+					for (int i = 0; i <= _controller.allFocus.Count; i++) {
+				 		if(_controller.focus != _controller.allFocus[i])
+							_controller.allFocus.Add (_controller.focus);
+					}
+				}
 			}
 		}
 		yield return new WaitForFixedUpdate ();
