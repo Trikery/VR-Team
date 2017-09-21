@@ -16,6 +16,9 @@ public class Controller : MonoBehaviour {
     public GameObject cameraHead;
     public Transform nose;
     public Transform vrRig;
+
+    public List<Transform> allFocus;
+
     public float moveSpeed;
     public float rotateSpeed;
     public float jumpSpeed = 5;
@@ -31,6 +34,9 @@ public class Controller : MonoBehaviour {
     public Transform focus;
     
     public bool clicked;
+
+    public Shader Outlineable;
+    public float outlineSize;
 
 
     private void OnEnable()
@@ -66,14 +72,21 @@ public class Controller : MonoBehaviour {
     private void HandleUngripped(object sender, ClickedEventArgs e)
     {
         gripped = false;
+        if (focus != null)
+        {
+            focus.GetComponent<Material>().SetFloat("_OutlineWidth", 1);
+        }
     }
 
     private void HandleGripped(object sender, ClickedEventArgs e)
     {
         gripped = true;
-        LockFocus.setFocus(this);
+        WeaponLockOn_KH.setFocus(this);
         Mover.CallMover(this);
+        
     }
+
+    
 
     private void RHandlePadClickUp(object sender, ClickedEventArgs e)
     {
@@ -151,6 +164,8 @@ public class Controller : MonoBehaviour {
         _controller.Ungripped -= HandleUngripped;
     }
 
+    
+
     //IEnumerator MoveController()
     //{
     //    yield return new WaitForFixedUpdate();
@@ -163,7 +178,7 @@ public class Controller : MonoBehaviour {
     //    }
     //    if (touching)
     //        StartCoroutine(MoveController());
-        
+
     //}
 
     //IEnumerator ShootGun()
@@ -178,7 +193,7 @@ public class Controller : MonoBehaviour {
     //    bullet.transform.position = nose.GetComponent<Transform>().position;
     //    bullet.transform.localEulerAngles = nose.localEulerAngles;
     //}
-    
+
     //IEnumerator Jump()
     //{
     //    yield return new WaitForFixedUpdate();
@@ -232,5 +247,5 @@ public class Controller : MonoBehaviour {
         }
     }*/
 
-    
+
 }
