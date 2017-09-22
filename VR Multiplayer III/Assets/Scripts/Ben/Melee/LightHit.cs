@@ -18,7 +18,7 @@ public class LightHit : NetworkBehaviour {
     void Start () {
         if (!isLocalPlayer)
         {
-            Destroy(this);
+            this.enabled = false;
         }
         //lightA = gameObject;
         Light += LightAttackHandler;

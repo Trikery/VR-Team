@@ -19,7 +19,7 @@ public class HeavyHit : NetworkBehaviour {
 	void Start () {
         if (!isLocalPlayer)
         {
-            Destroy(this);
+            this.enabled = false;
         }
         //heavyA = gameObject;
         Heavy += HeavyHandler;
