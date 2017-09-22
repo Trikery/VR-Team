@@ -17,10 +17,10 @@ public class HeavyHit : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //if (!isLocalPlayer)
-        //{
-        //    Destroy(this);
-        //}
+        if (!isLocalPlayer)
+        {
+            Destroy(this);
+        }
         //heavyA = gameObject;
         Heavy += HeavyHandler;
         _thisRenderer = heavyA.GetComponent<MeshRenderer>();
