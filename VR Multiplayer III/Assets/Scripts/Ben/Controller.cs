@@ -32,6 +32,7 @@ public class Controller : MonoBehaviour {
     public bool pulledTrigger;
     public bool gripped;
     public bool meleeMode;
+    public bool switching;
 
     public Transform focus;
     
@@ -61,6 +62,7 @@ public class Controller : MonoBehaviour {
         pulledTrigger = false;
         clicked = false;
         meleeMode = true;
+        switching = false;
 
         dino = Mover.thisDino;
 
@@ -148,14 +150,16 @@ public class Controller : MonoBehaviour {
 
     private void MenuButtonHandler(object sender, ClickedEventArgs e)
     {
-        if(meleeMode)
+        if(meleeMode && !switching)
         {
             meleeMode = false;
+            StartCoroutine(SwitchWait());
             return;
         }
-        if(!meleeMode)
+        if(!meleeMode && !switching)
         {
             meleeMode = true;
+            StartCoroutine(SwitchWait());
             return;
         }
     }
@@ -170,6 +174,14 @@ public class Controller : MonoBehaviour {
         _controller.PadUnclicked -= RHandlePadClickUp;
         _controller.Gripped -= HandleGripped;
         _controller.Ungripped -= HandleUngripped;
+    }
+
+    IEnumerator SwitchWait()
+    {
+        switching = true;
+        yield return new WaitForSeconds(.5f);
+        switching = false;
+
     }
 
     
