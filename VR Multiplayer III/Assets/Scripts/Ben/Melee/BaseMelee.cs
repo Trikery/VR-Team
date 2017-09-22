@@ -16,7 +16,8 @@ public class BaseMelee : NetworkBehaviour {
 	void Start () {
         if(!isLocalPlayer)
         {
-            this.enabled = false;
+            Destroy(this);
+            return;
         }
         _attacking = false;
         MeleeAttack += MeleeAttackHandler;
