@@ -6,9 +6,12 @@ using UnityEngine.Networking;
 
 public class BaseMelee : NetworkBehaviour {
 
-    public static Action MeleeAttack;
-    public static Action QuickAttack;
+    public static Action StartMeleeCount;
+    public static Action ReleaseMeleeAttack;
     private bool _attacking;
+    private bool _AttackCharged;
+    private float _HeavyWait = 1.3f;
+    private float _LightWait = 1f;
     //private Coroutine _heavy;
 
 
@@ -20,28 +23,33 @@ public class BaseMelee : NetworkBehaviour {
             return;
         }
         _attacking = false;
-        MeleeAttack += MeleeAttackHandler;
-        QuickAttack += QuickAttackHandler;
+        _AttackCharged = false;
+        StartMeleeCount += StartMeleeCountHandler;
+        ReleaseMeleeAttack += ReleaseMeleeAttackHandler;
 	}
 
-    private void QuickAttackHandler()
+    private void ReleaseMeleeAttackHandler()
     {
-        if(!_attacking)
+        if(!_attacking && !_AttackCharged)
         {
-            //if (_heavy != null)
-            //    StopCoroutine(_heavy);
             _attacking = true;
-            StopCoroutine(WaitForHeavy());
             LightHit.Light();
-            StartCoroutine(ResetAttack());
+            StartCoroutine(ResetAttack(_LightWait));
+        }
+        if(!_attacking && _AttackCharged)
+        {
+            _attacking = true;
+            HeavyHit.Heavy();
+            StartCoroutine(ResetAttack(_HeavyWait));
         }
     }
 
-    private void MeleeAttackHandler()
+    private void StartMeleeCountHandler()
     {
         if (!_attacking)
         {
-            /*_heavy = */StartCoroutine(WaitForHeavy());
+            _AttackCharged = false;
+            StartCoroutine(WaitForHeavy());
         }
     }
 
@@ -49,15 +57,16 @@ public class BaseMelee : NetworkBehaviour {
     {
         
         yield return new WaitForSeconds(2f);
-        _attacking = true;
-        HeavyHit.Heavy();
-        StartCoroutine(ResetAttack());
-         
+        if (!_attacking)
+        {
+            _AttackCharged = true;
+        }
     }
 
-    IEnumerator ResetAttack()
+    IEnumerator ResetAttack(float _Time)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(_Time);
         _attacking = false;
+        _AttackCharged = false;
     }
 }

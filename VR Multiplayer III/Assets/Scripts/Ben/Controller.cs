@@ -54,6 +54,7 @@ public class Controller : MonoBehaviour {
         _controller.PadUnclicked += RHandlePadClickUp;
         _controller.Gripped += HandleGripped;
         _controller.Ungripped += HandleUngripped;
+        
         _controller.MenuButtonClicked += MenuButtonHandler;
         //_controller.MenuButtonUnclicked += MenuButtonUnclicked;
         touching = false;
@@ -127,7 +128,7 @@ public class Controller : MonoBehaviour {
         pulledTrigger = false;
         if(meleeMode)
         {
-            BaseMelee.QuickAttack();
+            BaseMelee.ReleaseMeleeAttack();
         }
 
     }
@@ -137,7 +138,7 @@ public class Controller : MonoBehaviour {
         pulledTrigger = true;
         if(meleeMode)
         {
-            BaseMelee.MeleeAttack();
+            BaseMelee.StartMeleeCount();
         }
         if (!meleeMode)
         {
@@ -150,10 +151,12 @@ public class Controller : MonoBehaviour {
         if(meleeMode)
         {
             meleeMode = false;
+            return;
         }
         if(!meleeMode)
         {
             meleeMode = true;
+            return;
         }
     }
 
