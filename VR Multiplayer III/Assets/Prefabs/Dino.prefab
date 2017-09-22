@@ -49,6 +49,8 @@ GameObject:
   - component: {fileID: 114798412787530862}
   - component: {fileID: 114750116394792516}
   - component: {fileID: 114427113314942624}
+  - component: {fileID: 114010988004367962}
+  - component: {fileID: 114106349247408046}
   m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
@@ -415,6 +417,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114010988004367962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235996403604436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbcb299b580743d4dab4141d82c4f54f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heavyAttack: 0
+  heavyA: {fileID: 1927049046563556}
 --- !u!114 &114082126513577762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -447,6 +462,19 @@ MonoBehaviour:
     i15: 82
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &114106349247408046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235996403604436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847b1ff691ebc0e45b9a4b764e2dab5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightAttack: 0
+  lightA: {fileID: 1138972880401742}
 --- !u!114 &114187606970884454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -626,7 +654,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1927049046563556}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbcb299b580743d4dab4141d82c4f54f, type: 3}
   m_Name: 
@@ -651,7 +679,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1138972880401742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 847b1ff691ebc0e45b9a4b764e2dab5f, type: 3}
   m_Name: 

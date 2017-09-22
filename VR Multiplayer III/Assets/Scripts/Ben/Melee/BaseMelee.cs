@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-//using UnityEngine.Networking;
+using UnityEngine.Networking;
 
-public class BaseMelee : MonoBehaviour {
+public class BaseMelee : NetworkBehaviour {
 
     public static Action MeleeAttack;
     public static Action QuickAttack;
@@ -14,10 +14,10 @@ public class BaseMelee : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //if(!isLocalPlayer)
-        //{
-        //    Destroy(this);
-        //}
+        if(!isLocalPlayer)
+        {
+            Destroy(this);
+        }
         _attacking = false;
         MeleeAttack += MeleeAttackHandler;
         QuickAttack += QuickAttackHandler;

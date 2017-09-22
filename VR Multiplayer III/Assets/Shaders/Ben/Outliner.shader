@@ -1,4 +1,4 @@
-﻿Shader "Outliners/Outliner"
+﻿Shader "Ben/Outliner"
 {
 	Properties
 	{

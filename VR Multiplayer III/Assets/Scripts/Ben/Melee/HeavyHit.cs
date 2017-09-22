@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-//using UnityEngine.Networking;
+using UnityEngine.Networking;
 
-public class HeavyHit : MonoBehaviour {
+public class HeavyHit : NetworkBehaviour {
 
     public static Action Heavy;
 
@@ -21,10 +21,10 @@ public class HeavyHit : MonoBehaviour {
         //{
         //    Destroy(this);
         //}
-        heavyA = gameObject;
+        //heavyA = gameObject;
         Heavy += HeavyHandler;
-        _thisRenderer = gameObject.GetComponent<MeshRenderer>();
-        _thisCollider = gameObject.GetComponent<Collider>();
+        _thisRenderer = heavyA.GetComponent<MeshRenderer>();
+        _thisCollider = heavyA.GetComponent<Collider>();
 }
 
     private void HeavyHandler()

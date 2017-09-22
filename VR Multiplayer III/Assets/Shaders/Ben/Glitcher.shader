@@ -1,4 +1,4 @@
-﻿Shader "Unlit/Glitcher"
+﻿Shader "Ben/Glitcher"
 {
 	Properties
 	{

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-//using UnityEngine.Networking;
+using UnityEngine.Networking;
 
-public class LightHit : MonoBehaviour {
+public class LightHit : NetworkBehaviour {
 
     public static Action Light;
 
@@ -16,14 +16,14 @@ public class LightHit : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //if (!isLocalPlayer)
-        //{
-        //    Destroy(this);
-        //}
-        lightA = gameObject;
+        if (!isLocalPlayer)
+        {
+            Destroy(this);
+        }
+        //lightA = gameObject;
         Light += LightAttackHandler;
-        _thisRenderer = gameObject.GetComponent<MeshRenderer>();
-        _thisCollider = gameObject.GetComponent<Collider>();
+        _thisRenderer = lightA.GetComponent<MeshRenderer>();
+        _thisCollider = lightA.GetComponent<Collider>();
 	}
 
     private void LightAttackHandler()
