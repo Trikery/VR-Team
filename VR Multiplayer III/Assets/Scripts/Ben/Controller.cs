@@ -79,17 +79,19 @@ public class Controller : MonoBehaviour {
         gripped = false;
         if (focus != null)
         {
-            focus.GetComponent<Material>().SetFloat("_OutlineWidth", 1);
+            focus.GetComponent<Renderer>().material.SetFloat("_OutlineWidth", 1);
+            focus = null;
         }
-        AddAsTargetUI(null);
+        //AddAsTargetUI(null);
     }
 
     private void HandleGripped(object sender, ClickedEventArgs e)
     {
         gripped = true;
+        //LockFocus.setFocus(this);
         WeaponLockOn_KH.setFocus(this);
-        Mover.CallMover(this);
-        AddAsTargetUI(focus.gameObject);
+        //Mover.CallMover(this);
+        //AddAsTargetUI(focus.gameObject);
 
 
     }

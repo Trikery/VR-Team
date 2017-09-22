@@ -38,7 +38,7 @@ public class LockFocus : MonoBehaviour {
     {
         canRaycast = true;
         _controller = _script;
-        allFocus.Clear();
+        //allFocus.Clear();
         StartCoroutine(RaycastWeapon());
         StartCoroutine(RaycastCounter());
     }
