@@ -13,9 +13,11 @@ public class WeaponLockOn_KH : MonoBehaviour {
 	RaycastHit rayHit;
 
 	public bool canRaycast;
+    public bool inList;
 	public float rayTimeLimit = 2f;
 	public float lineEndWidth = .5f;
     public Vector3 rayOrig;
+
 
 	public void Start(){
 		setFocus += SetFocusHandler;
@@ -23,10 +25,12 @@ public class WeaponLockOn_KH : MonoBehaviour {
 		line.enabled = false;
 		line.startWidth = 0;
 		line.endWidth = lineEndWidth;
+
 	}
 
 	private void SetFocusHandler(Controller _getFocus){
 		canRaycast = true;
+        inList = false;
 		_controller = _getFocus;
 		_controller.allFocus.Clear ();
 		StartCoroutine (RaycastWeapon ());
@@ -52,11 +56,9 @@ public class WeaponLockOn_KH : MonoBehaviour {
 					_controller.focus.GetComponent<Renderer>().material.SetFloat ("_OutlineWidth", _controller.outlineSize);
                     if(_controller.allFocus.Count != 0)
                     {
-                        for (int i = 0; i  <= _controller.allFocus.Count -1; i++)
-                        {
-                            if (_controller.focus != _controller.allFocus[i])
-                                _controller.allFocus.Add(_controller.focus);
-                        }
+                        if (!_controller.allFocus.Contains(_controller.focus))
+                            _controller.allFocus.Add(_controller.focus);
+                        
                     }
                     if(_controller.allFocus.Count == 0)
                         _controller.allFocus.Add(_controller.focus);

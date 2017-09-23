@@ -10,8 +10,8 @@ public class LController : MonoBehaviour {
     public SteamVR_Controller.Device device;
 
     private Vector2 _TouchSpot;
-    private Controller _RController;
-    private int _FocusCount;
+    public Controller _RController;
+    public int _FocusCount;
 
     private void OnEnable()
     {
@@ -37,8 +37,8 @@ public class LController : MonoBehaviour {
             }
             if (_TouchSpot.x < -.5f)
             {
-                _RController.focus.GetComponent<Material>().SetFloat("_OutlineWidth", 1);
-                if (_FocusCount < _RController.allFocus.Count)
+                _RController.focus.GetComponent<Renderer>().material.SetFloat("_OutlineWidth", 1);
+                if (_FocusCount < _RController.allFocus.Count -1)
                 {
                     _FocusCount++;
                     
@@ -47,12 +47,13 @@ public class LController : MonoBehaviour {
                     _FocusCount = 0;
 
                 }
+                
                 _RController.focus = _RController.allFocus[_FocusCount];
-                _RController.focus.GetComponent<Material>().SetFloat("_OutlineWidth", _RController.outlineSize);
+                _RController.focus.GetComponent<Renderer>().material.SetFloat("_OutlineWidth", _RController.outlineSize);
             }
             if (_TouchSpot.x > .5f)
             {
-                _RController.focus.GetComponent<Material>().SetFloat("_OutlineWidth", 1);
+                _RController.focus.GetComponent<Renderer>().material.SetFloat("_OutlineWidth", 1);
                 if (_FocusCount > 0)
                 {
                     _FocusCount--;
@@ -60,19 +61,21 @@ public class LController : MonoBehaviour {
                 }
                 else
                 {
-                    _FocusCount = _RController.allFocus.Count;
+                    _FocusCount = _RController.allFocus.Count - 1;
 
                 }
                 _RController.focus = _RController.allFocus[_FocusCount];
-                _RController.focus.GetComponent<Material>().SetFloat("_OutlineWidth", _RController.outlineSize);
+                _RController.focus.GetComponent<Renderer>().material.SetFloat("_OutlineWidth", _RController.outlineSize);
+
             }
+            
         }
 
     }
 
     private void LPadUntouched(object sender, ClickedEventArgs e)
-    {
-        throw new NotImplementedException();
+    {//
+        //throw new NotImplementedException();
     }
 
     
