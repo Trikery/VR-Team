@@ -95,7 +95,7 @@ public class Mover : NetworkBehaviour {
         if (controller.touchSpot != new Vector2(0, 0) && !controller.gripped)
         {
             //set input value to always be positive
-            if (controller.touchSpot != null)
+            if (controller.touchSpot != new Vector2(0,0))
             {
                 _forward = controller.device.GetAxis().x + controller.device.GetAxis().y;
                 if (_forward < 0)
@@ -179,7 +179,7 @@ public class Mover : NetworkBehaviour {
             leftRight = 1;
 
         _characterRigid.AddForce((transform.right * leftRight)* controller.moveSpeed * controller.forwardJmpSpeed * Time.deltaTime);
-        focusRotate = Quaternion.LookRotation(controller.focus.position - transform.position);
+        _focusRotate = Quaternion.LookRotation(controller.focus.position - transform.position);
         _characterRigid.MoveRotation(Quaternion.Slerp(transform.rotation, _focusRotate, Time.deltaTime * controller.rotateSpeed));
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
 
