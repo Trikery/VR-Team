@@ -52,7 +52,7 @@ public class WeaponLockOn_KH : MonoBehaviour {
 					_controller.focus.GetComponent<Renderer>().material.SetFloat ("_OutlineWidth", _controller.outlineSize);
                     if(_controller.allFocus.Count != 0)
                     {
-                        for (int i = 0; i <= _controller.allFocus.Count; i++)
+                        for (int i = 0; i  <= _controller.allFocus.Count -1; i++)
                         {
                             if (_controller.focus != _controller.allFocus[i])
                                 _controller.allFocus.Add(_controller.focus);
