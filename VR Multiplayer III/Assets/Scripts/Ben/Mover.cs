@@ -125,7 +125,7 @@ public class Mover : NetworkBehaviour {
             {
                 //controlls rotation
                 _focusRotate = Quaternion.LookRotation(controller.focus.position - transform.position);
-                transform.rotation = Quaternion.Slerp(transform.rotation, _focusRotate, Time.deltaTime * controller.rotateSpeed);
+                /*transform.rotation = */_characterRigid.MoveRotation(Quaternion.Slerp(transform.rotation, _focusRotate, Time.deltaTime * controller.rotateSpeed));
                 transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
             }
                 //controlls transformation
