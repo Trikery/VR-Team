@@ -45,12 +45,12 @@ public class Mover : NetworkBehaviour {
         {
             if (!controller.gripped)
             {
-                
+                _jumping = true;
                 StartCoroutine(Jump());
                 // StartCoroutine(ForwardForce());
                 StartCoroutine(JumpCount());
                 StartCoroutine(ResetJump());
-                _jumping = true;
+                
                 StopCoroutine(MoveController());
             }
         }
@@ -62,18 +62,21 @@ public class Mover : NetworkBehaviour {
             {
                 if (controller.device.GetAxis().y > .5f)
                 {
+                    _jumping = true;
                     StartCoroutine(ForwardJump());
                     StartCoroutine(JumpCount());
                     StartCoroutine(ResetJump());
                 }
                 if (controller.device.GetAxis().y < -.5f)
                 {
+                    _jumping = true;
                     StartCoroutine(BackJump());
                     StartCoroutine(JumpCount());
                     StartCoroutine(ResetJump());
                 }
                 if (controller.device.GetAxis().x > .5f || controller.device.GetAxis().x < -.5f)
                 {
+                    _jumping = true;
                     StartCoroutine(SideJump());
                     StartCoroutine(JumpCount());
                     StartCoroutine(ResetJump());
@@ -136,7 +139,7 @@ public class Mover : NetworkBehaviour {
             }
 
         }
-        if (controller.touching && !controller.clicked)
+        if ((controller.touching && !controller.clicked) || controller.gripped)
             StartCoroutine(MoveController());
 
     }
