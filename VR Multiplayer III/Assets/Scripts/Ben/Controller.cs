@@ -20,6 +20,7 @@ public class Controller : MonoBehaviour {
     public List<Transform> allFocus;
 
     public static Action<GameObject> AddAsTargetUI;
+    public static Action Unsubscribe;
 
     public float moveSpeed;
     public float rotateSpeed;

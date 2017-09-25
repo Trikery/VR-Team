@@ -5,7 +5,7 @@ using System;
 
 public class MenuButton_KH : MonoBehaviour {
 
-	public static Action <Controller> openMenu;
+    public static Action openMenu;//<Controller> openMenu;
 	public GameObject pauseMenu;
 	public bool _menuIsOn = false;
 
@@ -15,7 +15,7 @@ public class MenuButton_KH : MonoBehaviour {
 		openMenu += OpenMenuHandler;
 	}
 
-	private void OpenMenuHandler(Controller _menu){
+	private void OpenMenuHandler(){//Controller _menu){
 		ActivateMenu ();
 	}
 
