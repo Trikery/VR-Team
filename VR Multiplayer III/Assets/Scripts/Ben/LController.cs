@@ -19,6 +19,7 @@ public class LController : MonoBehaviour {
         trackedObject = GetComponent<SteamVR_TrackedObject>();
         controller.PadTouched += LPadTouched;
         controller.PadUntouched += LPadUntouched;
+        controller.MenuButtonClicked += MenuButtonClickedHandler;
     }
 
     private void LPadTouched(object sender, ClickedEventArgs e)
@@ -76,6 +77,12 @@ public class LController : MonoBehaviour {
     private void LPadUntouched(object sender, ClickedEventArgs e)
     {//
         //throw new NotImplementedException();
+    }
+
+    private void MenuButtonClickedHandler()
+    {
+        MenuButton_KH.openMenu();
+        Controller.Unsubscribe();
     }
 
     
