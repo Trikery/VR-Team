@@ -79,7 +79,7 @@ public class LController : MonoBehaviour {
         //throw new NotImplementedException();
     }
 
-    private void MenuButtonClickedHandler()
+    private void MenuButtonClickedHandler(object sender, ClickedEventArgs e)
     {
         MenuButton_KH.openMenu();
         Controller.Unsubscribe();
