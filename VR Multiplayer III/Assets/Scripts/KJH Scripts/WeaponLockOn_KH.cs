@@ -18,7 +18,7 @@ public class WeaponLockOn_KH : MonoBehaviour {
 
 	public void Start(){
 		setFocus += SetFocusHandler;
-		line = gameObject.AddComponent<LineRenderer> ();
+		line = gameObject.GetComponent<LineRenderer> ();
 		line.enabled = false;
 		line.startWidth = 0;
 		line.endWidth = lineEndWidth;
