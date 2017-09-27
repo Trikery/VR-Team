@@ -47,10 +47,10 @@ GameObject:
   - component: {fileID: 114472388334303500}
   - component: {fileID: 114861250288185230}
   - component: {fileID: 114798412787530862}
-  - component: {fileID: 114750116394792516}
   - component: {fileID: 114427113314942624}
   - component: {fileID: 114010988004367962}
   - component: {fileID: 114106349247408046}
+  - component: {fileID: 114428084812960702}
   m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 1235996403604436}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.7, y: 1.15, z: -4.31}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 4, z: 3}
   m_Children:
   - {fileID: 4906649267596314}
   - {fileID: 4157190632003870}
@@ -518,6 +518,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a61743bcd0a5004b874c56715a42b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114428084812960702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235996403604436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa7dc92199c6b74bbe35382802a7d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentBullet: {fileID: 0}
+  bulletSpeed: 0
 --- !u!114 &114472388334303500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -624,19 +637,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &114750116394792516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1235996403604436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aa7dc92199c6b74bbe35382802a7d68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentBullet: {fileID: 0}
-  bulletSpeed: 0
 --- !u!114 &114798412787530862
 MonoBehaviour:
   m_ObjectHideFlags: 1

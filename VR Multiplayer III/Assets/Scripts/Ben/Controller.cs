@@ -77,21 +77,26 @@ public class Controller : MonoBehaviour {
 
     private void HandleUngripped(object sender, ClickedEventArgs e)
     {
-        gripped = false;
-        if (focus != null)
-        {
-            focus.GetComponent<Renderer>().material.SetFloat("_OutlineWidth", 1);
-            focus = null;
-        }
-		if(AddAsTargetUI != null)
-        	AddAsTargetUI(null);
+        
     }
 
     private void HandleGripped(object sender, ClickedEventArgs e)
     {
-        gripped = true;
-        //LockFocus.setFocus(this);
-        WeaponLockOn_KH.setFocus(this);
+        if (!gripped)
+        {
+            gripped = true;
+            WeaponLockOn_KH.setFocus(this);
+        }else if(gripped)
+        {
+            gripped = false;
+            if (focus != null)
+            {
+                focus.GetComponent<Renderer>().material.SetFloat("_OutlineWidth", 1);
+                focus = null;
+            }
+            if (AddAsTargetUI != null)
+                AddAsTargetUI(null);
+        }
         //Mover.CallMover(this);
 //		if(AddAsTargetUI != null && focus.gameObject != null)
 //        	AddAsTargetUI(focus.gameObject);
@@ -148,7 +153,8 @@ public class Controller : MonoBehaviour {
         }
         if (!meleeMode)
         {
-            Shoot.shooter();
+            if(Shoot.shooter != null)
+                Shoot.shooter();
         }
     }
 
@@ -157,13 +163,12 @@ public class Controller : MonoBehaviour {
         if(meleeMode && !switching)
         {
             meleeMode = false;
-            StartCoroutine(SwitchWait());
+            //StartCoroutine(SwitchWait());
             return;
-        }
-        if(!meleeMode && !switching)
+        }else if(!meleeMode && !switching)
         {
             meleeMode = true;
-            StartCoroutine(SwitchWait());
+            //StartCoroutine(SwitchWait());
             return;
         }
     }

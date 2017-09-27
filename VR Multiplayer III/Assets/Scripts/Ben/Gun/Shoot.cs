@@ -17,6 +17,7 @@ public class Shoot : NetworkBehaviour {
         if (!isLocalPlayer)
         {
             Destroy(this);
+            return;
         }
 
         shooter += ShooterHandler;
@@ -30,7 +31,7 @@ public class Shoot : NetworkBehaviour {
             currentBullet = BulletPool.bullets[0];
             currentBullet.GetComponent<Bullet>().TimeOutStarter();
             BulletPool.bullets.Remove(currentBullet);
-            currentBullet.transform.position = transform.position + (transform.forward * 2);
+            currentBullet.transform.position = transform.position + (transform.forward * 5);
             currentBullet.transform.rotation = transform.rotation;
             currentBullet.transform.localEulerAngles = transform.localEulerAngles;
             currentBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * bulletSpeed * 10);

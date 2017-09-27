@@ -15,8 +15,7 @@ public class LController : MonoBehaviour {
 
 
 	public static bool menuOpen;
-
-	public MenuPointer menuScript;
+    
 
     private void OnEnable()
     {
@@ -59,6 +58,7 @@ public class LController : MonoBehaviour {
                 
                 _RController.focus = _RController.allFocus[_FocusCount];
                 _RController.focus.GetComponent<Renderer>().material.SetFloat("_OutlineWidth", _RController.outlineSize);
+                //Controller.AddAsTargetUI(_RController.focus.GetComponent<GameObject>());
             }
             if (_TouchSpot.x > .5f)
             {
@@ -75,6 +75,7 @@ public class LController : MonoBehaviour {
                 }
                 _RController.focus = _RController.allFocus[_FocusCount];
                 _RController.focus.GetComponent<Renderer>().material.SetFloat("_OutlineWidth", _RController.outlineSize);
+                //Controller.AddAsTargetUI(_RController.focus.GetComponent<GameObject>());
 
             }
             
@@ -89,10 +90,10 @@ public class LController : MonoBehaviour {
 
     private void MenuButtonClickedHandler(object sender, ClickedEventArgs e)
     {
-        
-		if (!menuOpen) 
+        MenuPointer.openMenu();
+        if (!menuOpen) 
 		{
-			MenuPointer.openMenu();
+			
 			controller.TriggerClicked += HandleTriggerClicked;
 			menuOpen = true;
 			print (menuOpen);
