@@ -47,6 +47,10 @@ public class WeaponLockOn_KH : MonoBehaviour {
 					}
 					_controller.focus = rayHit.collider.GetComponent<Transform> ();
 					_controller.focus.GetComponent<Renderer>().material.SetFloat ("_OutlineWidth", _controller.outlineSize);
+
+					if(Controller.AddAsTargetUI != null && _controller.focus.gameObject != null)
+						Controller.AddAsTargetUI(_controller.focus.gameObject);
+					
 					if (_controller.allFocus.Count != 0) {
 						if (!_controller.allFocus.Contains (_controller.focus)) {
 							_controller.allFocus.Add (_controller.focus);

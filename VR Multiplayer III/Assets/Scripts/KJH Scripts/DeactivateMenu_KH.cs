@@ -5,12 +5,17 @@ using UnityEngine;
 public class DeactivateMenu_KH : MonoBehaviour {
 
 	public GameObject pauseMenu;
-	public MenuButton_KH menuScript;
+	public MenuPointer menuScript;
+	public GameObject circle;
 
 	 void OnTriggerEnter (){
 		if (menuScript._menuIsOn == true) {
-			pauseMenu.SetActive (false);
+			circle.GetComponent<Collider> ().enabled = false;
+
 			menuScript._menuIsOn = false;
+			LController.menuOpen = false;
+			print (LController.menuOpen);
+			pauseMenu.SetActive (false);
 		}
 	}
 }

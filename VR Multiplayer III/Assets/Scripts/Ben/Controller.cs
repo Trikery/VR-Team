@@ -83,7 +83,8 @@ public class Controller : MonoBehaviour {
             focus.GetComponent<Renderer>().material.SetFloat("_OutlineWidth", 1);
             focus = null;
         }
-        //AddAsTargetUI(null);
+		if(AddAsTargetUI != null)
+        	AddAsTargetUI(null);
     }
 
     private void HandleGripped(object sender, ClickedEventArgs e)
@@ -92,9 +93,8 @@ public class Controller : MonoBehaviour {
         //LockFocus.setFocus(this);
         WeaponLockOn_KH.setFocus(this);
         //Mover.CallMover(this);
-        //AddAsTargetUI(focus.gameObject);
-
-
+//		if(AddAsTargetUI != null && focus.gameObject != null)
+//        	AddAsTargetUI(focus.gameObject);
     }
 
     
@@ -124,7 +124,8 @@ public class Controller : MonoBehaviour {
     {
         
         touching = true;
-        Mover.CallMover(this);
+		if(Mover.CallMover != null)
+        	Mover.CallMover(this);
 
     }
 

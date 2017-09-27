@@ -6,13 +6,16 @@ using UnityEngine.SceneManagement;
 public class QuitGame_KH : MonoBehaviour {
 
 	public GameObject pauseMenu;
-	public MenuButton_KH menuScript;
+	public MenuPointer menuScript;
+	public GameObject circle;
 
 	public Scene menuScene;
 
 	void OnTriggerEnter(){
+		
+		circle.GetComponent<Collider> ().enabled = false;
 		pauseMenu.SetActive (false);
 		menuScript._menuIsOn = false;
-		SceneManager.LoadScene (menuScene.name, LoadSceneMode.Single);
+		SceneManager.LoadScene (0);
 	}
 }

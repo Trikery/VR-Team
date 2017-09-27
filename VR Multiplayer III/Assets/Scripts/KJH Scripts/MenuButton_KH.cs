@@ -16,13 +16,20 @@ public class MenuButton_KH : MonoBehaviour {
 	}
 
 	private void OpenMenuHandler(){
-		ActivateMenu ();
+		if (_menuIsOn) {
+			pauseMenu.SetActive (false);
+			_menuIsOn = false;
+		} else if (!_menuIsOn) {
+			ActivateMenu ();
+		}
 	}
 
 	public void ActivateMenu (){
 		if (_menuIsOn == false) {
 			pauseMenu.SetActive (true);
 			_menuIsOn = true;
+
+			MenuPointer.startMenuRaycast ();
 		}
 	}
 

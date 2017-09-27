@@ -13,6 +13,11 @@ public class LController : MonoBehaviour {
     public Controller _RController;
     public int _FocusCount;
 
+
+	public static bool menuOpen;
+
+	public MenuPointer menuScript;
+
     private void OnEnable()
     {
         controller = GetComponent<SteamVR_TrackedController>();
@@ -20,6 +25,9 @@ public class LController : MonoBehaviour {
         controller.PadTouched += LPadTouched;
         controller.PadUntouched += LPadUntouched;
         controller.MenuButtonClicked += MenuButtonClickedHandler;
+		//controller.MenuButtonUnclicked += MenuButtonUnclicked;
+		menuOpen = false;
+		print (menuOpen);
     }
 
     private void LPadTouched(object sender, ClickedEventArgs e)
@@ -81,9 +89,35 @@ public class LController : MonoBehaviour {
 
     private void MenuButtonClickedHandler(object sender, ClickedEventArgs e)
     {
-        MenuButton_KH.openMenu();
-        Controller.Unsubscribe();
+        
+		if (!menuOpen) 
+		{
+			MenuPointer.openMenu();
+			controller.TriggerClicked += HandleTriggerClicked;
+			menuOpen = true;
+			print (menuOpen);
+		} else if(menuOpen) 
+		{
+			menuOpen = false;
+			controller.TriggerClicked -= HandleTriggerClicked;
+			print (menuOpen);
+
+		}
+
+
+		//MenuPointer.startMenuRaycast();
+        //Controller.Unsubscribe();
     }
 
-    
+	//private void MenuButtonUnclicked(object sender, ClickedEventArgs e)
+	//{
+		
+	//}
+
+	private void HandleTriggerClicked(object sender, ClickedEventArgs e)
+	{
+		print ("triggered");
+		MenuPointer.clickMenuButton ();
+	}
+
 }

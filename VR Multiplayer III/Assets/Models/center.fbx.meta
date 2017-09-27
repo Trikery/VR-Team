@@ -1536,6 +1536,247 @@ ModelImporter:
     4300476: pCube11
     4300478: pCylinder1
     4300480: pPlane1
+    6400000: A_side
+    6400002: B_side
+    6400004: Bridge
+    6400006: Bridge 1
+    6400008: Bridge 2
+    6400010: Bridge 3
+    6400012: Bridge1
+    6400014: Bridge1 1
+    6400016: Bridge1 2
+    6400018: Bridge1 3
+    6400020: Bridge10
+    6400022: Bridge10 1
+    6400024: Bridge10 2
+    6400026: Bridge10 3
+    6400028: Bridge3
+    6400030: Bridge3 1
+    6400032: Bridge3 2
+    6400034: Bridge3 3
+    6400036: Bridge5
+    6400038: Bridge5 1
+    6400040: Bridge5 2
+    6400042: Bridge5 3
+    6400044: Bridge7
+    6400046: Bridge7 1
+    6400048: Bridge7 2
+    6400050: Bridge7 3
+    6400052: Bridge9
+    6400054: Bridge9 1
+    6400056: Bridge9 2
+    6400058: Bridge9 3
+    6400060: pCube10
+    6400062: pCube11
+    6400064: pCube12
+    6400066: pCube13
+    6400068: pCube14
+    6400070: pCube15
+    6400072: pCube16
+    6400074: pCube17
+    6400076: pCube18
+    6400078: pCube19
+    6400080: pCube2
+    6400082: pCube20
+    6400084: pCube21
+    6400086: pCube22
+    6400088: pCube23
+    6400090: pCube24
+    6400092: pCube25
+    6400094: pCube26
+    6400096: pCube27
+    6400098: pCube28
+    6400100: pCube29
+    6400102: pCube30
+    6400104: pCube31
+    6400106: pCube32
+    6400108: pCube33
+    6400110: pCube34
+    6400112: pCube35
+    6400114: pCube36
+    6400116: pCube37
+    6400118: pCube38
+    6400120: pCube39
+    6400122: pCube40
+    6400124: pCube41
+    6400126: pCube42
+    6400128: pCube43
+    6400130: pCube44
+    6400132: pCube45
+    6400134: pCube46
+    6400136: pCube47
+    6400138: pCube48
+    6400140: pCube49
+    6400142: pCube5
+    6400144: pCube50
+    6400146: pCube51
+    6400148: pCube52
+    6400150: pCube53
+    6400152: pCube54
+    6400154: pCube55
+    6400156: pCube56
+    6400158: pCube57
+    6400160: pCube58
+    6400162: pCube59
+    6400164: pCube6
+    6400166: pCube60
+    6400168: pCube61
+    6400170: pCube62
+    6400172: pCube63
+    6400174: pCube7
+    6400176: pCube8
+    6400178: pCube9
+    6400180: pCylinder1
+    6400182: polySurface41
+    6400184: polySurface42
+    6400186: polySurface43
+    6400188: polySurface44
+    6400190: pPipe1
+    6400192: pPipe10
+    6400194: pPipe11
+    6400196: pPipe12
+    6400198: pPipe2
+    6400200: pPipe3
+    6400202: pPipe4
+    6400204: pPipe5
+    6400206: pPipe6
+    6400208: pPipe7
+    6400210: pPipe8
+    6400212: pPipe9
+    6400214: pPlane1
+    6400216: pPrism1
+    6400218: pPrism10
+    6400220: pPrism11
+    6400222: pPrism12
+    6400224: pPrism13
+    6400226: pPrism14
+    6400228: pPrism15
+    6400230: pPrism16
+    6400232: pPrism17
+    6400234: pPrism2
+    6400236: pPrism3
+    6400238: pPrism4
+    6400240: pPrism5
+    6400242: pPrism6
+    6400244: pPrism7
+    6400246: pPrism8
+    6400248: pPrism9
+    6400250: pTorus1
+    6400252: pTorus2
+    6400254: pTorus3
+    6400256: Relic
+    6400258: Side 1
+    6400260: Side1
+    6400262: T_Rex_Tex_RigAndModel_13_1:Armor
+    6400264: T_Rex_Tex_RigAndModel_13_1:Armor 1
+    6400266: T_Rex_Tex_RigAndModel_13_1:Armor 2
+    6400268: T_Rex_Tex_RigAndModel_13_1:Armor1
+    6400270: T_Rex_Tex_RigAndModel_13_1:Bottom
+    6400272: T_Rex_Tex_RigAndModel_13_1:Bottom 1
+    6400274: T_Rex_Tex_RigAndModel_13_1:Bottom 2
+    6400276: T_Rex_Tex_RigAndModel_13_1:Bottom 3
+    6400278: T_Rex_Tex_RigAndModel_13_1:Geo_Jaw
+    6400280: T_Rex_Tex_RigAndModel_13_1:Head1
+    6400282: T_Rex_Tex_RigAndModel_13_1:Left
+    6400284: T_Rex_Tex_RigAndModel_13_1:Left 1
+    6400286: T_Rex_Tex_RigAndModel_13_1:Left 2
+    6400288: T_Rex_Tex_RigAndModel_13_1:Left 3
+    6400290: T_Rex_Tex_RigAndModel_13_1:pCube1
+    6400292: T_Rex_Tex_RigAndModel_13_1:pCube10
+    6400294: T_Rex_Tex_RigAndModel_13_1:pCube11
+    6400296: T_Rex_Tex_RigAndModel_13_1:pCube12
+    6400298: T_Rex_Tex_RigAndModel_13_1:pCube13
+    6400300: T_Rex_Tex_RigAndModel_13_1:pCube14
+    6400302: T_Rex_Tex_RigAndModel_13_1:pCube17
+    6400304: T_Rex_Tex_RigAndModel_13_1:pCube18
+    6400306: T_Rex_Tex_RigAndModel_13_1:pCube19
+    6400308: T_Rex_Tex_RigAndModel_13_1:pCube1_Upper10
+    6400310: T_Rex_Tex_RigAndModel_13_1:pCube1_Upper11
+    6400312: T_Rex_Tex_RigAndModel_13_1:pCube1_Upper12
+    6400314: T_Rex_Tex_RigAndModel_13_1:pCube1_Upper4
+    6400316: T_Rex_Tex_RigAndModel_13_1:pCube1_Upper5
+    6400318: T_Rex_Tex_RigAndModel_13_1:pCube1_Upper6
+    6400320: T_Rex_Tex_RigAndModel_13_1:pCube1_Upper7
+    6400322: T_Rex_Tex_RigAndModel_13_1:pCube1_Upper8
+    6400324: T_Rex_Tex_RigAndModel_13_1:pCube1_Upper9
+    6400326: T_Rex_Tex_RigAndModel_13_1:pCube2
+    6400328: T_Rex_Tex_RigAndModel_13_1:pCube20
+    6400330: T_Rex_Tex_RigAndModel_13_1:pCube21
+    6400332: T_Rex_Tex_RigAndModel_13_1:pCube22
+    6400334: T_Rex_Tex_RigAndModel_13_1:pCube23
+    6400336: T_Rex_Tex_RigAndModel_13_1:pCube24
+    6400338: T_Rex_Tex_RigAndModel_13_1:pCube25
+    6400340: T_Rex_Tex_RigAndModel_13_1:pCube26
+    6400342: T_Rex_Tex_RigAndModel_13_1:pCube27
+    6400344: T_Rex_Tex_RigAndModel_13_1:pCube28
+    6400346: T_Rex_Tex_RigAndModel_13_1:pCube29
+    6400348: T_Rex_Tex_RigAndModel_13_1:pCube3
+    6400350: T_Rex_Tex_RigAndModel_13_1:pCube30
+    6400352: T_Rex_Tex_RigAndModel_13_1:pCube31
+    6400354: T_Rex_Tex_RigAndModel_13_1:pCube32
+    6400356: T_Rex_Tex_RigAndModel_13_1:pCube33
+    6400358: T_Rex_Tex_RigAndModel_13_1:pCube34
+    6400360: T_Rex_Tex_RigAndModel_13_1:pCube35
+    6400362: T_Rex_Tex_RigAndModel_13_1:pCube36
+    6400364: T_Rex_Tex_RigAndModel_13_1:pCube37
+    6400366: T_Rex_Tex_RigAndModel_13_1:pCube38
+    6400368: T_Rex_Tex_RigAndModel_13_1:pCube39
+    6400370: T_Rex_Tex_RigAndModel_13_1:pCube4
+    6400372: T_Rex_Tex_RigAndModel_13_1:pCube40
+    6400374: T_Rex_Tex_RigAndModel_13_1:pCube41
+    6400376: T_Rex_Tex_RigAndModel_13_1:pCube42
+    6400378: T_Rex_Tex_RigAndModel_13_1:pCube43
+    6400380: T_Rex_Tex_RigAndModel_13_1:pCube44
+    6400382: T_Rex_Tex_RigAndModel_13_1:pCube5
+    6400384: T_Rex_Tex_RigAndModel_13_1:pCube6
+    6400386: T_Rex_Tex_RigAndModel_13_1:pCube7
+    6400388: T_Rex_Tex_RigAndModel_13_1:pCube8
+    6400390: T_Rex_Tex_RigAndModel_13_1:pCube9
+    6400392: T_Rex_Tex_RigAndModel_13_1:pCylinder2
+    6400394: T_Rex_Tex_RigAndModel_13_1:pCylinder3
+    6400396: T_Rex_Tex_RigAndModel_13_1:pCylinder4
+    6400398: T_Rex_Tex_RigAndModel_13_1:pCylinder5
+    6400400: T_Rex_Tex_RigAndModel_13_1:polySurface13
+    6400402: T_Rex_Tex_RigAndModel_13_1:polySurface14
+    6400404: T_Rex_Tex_RigAndModel_13_1:polySurface15
+    6400406: T_Rex_Tex_RigAndModel_13_1:polySurface16
+    6400408: T_Rex_Tex_RigAndModel_13_1:polySurface17
+    6400410: T_Rex_Tex_RigAndModel_13_1:polySurface18
+    6400412: T_Rex_Tex_RigAndModel_13_1:polySurface19
+    6400414: T_Rex_Tex_RigAndModel_13_1:polySurface20
+    6400416: T_Rex_Tex_RigAndModel_13_1:polySurface21
+    6400418: T_Rex_Tex_RigAndModel_13_1:polySurface22
+    6400420: T_Rex_Tex_RigAndModel_13_1:polySurface23
+    6400422: T_Rex_Tex_RigAndModel_13_1:polySurface24
+    6400424: T_Rex_Tex_RigAndModel_13_1:polySurface25
+    6400426: T_Rex_Tex_RigAndModel_13_1:polySurface26
+    6400428: T_Rex_Tex_RigAndModel_13_1:polySurface27
+    6400430: T_Rex_Tex_RigAndModel_13_1:polySurface28
+    6400432: T_Rex_Tex_RigAndModel_13_1:polySurface29
+    6400434: T_Rex_Tex_RigAndModel_13_1:polySurface30
+    6400436: T_Rex_Tex_RigAndModel_13_1:polySurface31
+    6400438: T_Rex_Tex_RigAndModel_13_1:polySurface32
+    6400440: T_Rex_Tex_RigAndModel_13_1:polySurface33
+    6400442: T_Rex_Tex_RigAndModel_13_1:polySurface34
+    6400444: T_Rex_Tex_RigAndModel_13_1:polySurface35
+    6400446: T_Rex_Tex_RigAndModel_13_1:polySurface36
+    6400448: T_Rex_Tex_RigAndModel_13_1:polySurface37
+    6400450: T_Rex_Tex_RigAndModel_13_1:polySurface38
+    6400452: T_Rex_Tex_RigAndModel_13_1:polySurface39
+    6400454: T_Rex_Tex_RigAndModel_13_1:pSphere1
+    6400456: T_Rex_Tex_RigAndModel_13_1:pSphere2
+    6400458: T_Rex_Tex_RigAndModel_13_1:pSphere3
+    6400460: T_Rex_Tex_RigAndModel_13_1:pSphere4
+    6400462: T_Rex_Tex_RigAndModel_13_1:pSphere5
+    6400464: T_Rex_Tex_RigAndModel_13_1:pSphere6
+    6400466: T_Rex_Tex_RigAndModel_13_1:Right
+    6400468: T_Rex_Tex_RigAndModel_13_1:Right 1
+    6400470: T_Rex_Tex_RigAndModel_13_1:Right 2
+    6400472: T_Rex_Tex_RigAndModel_13_1:Right 3
+    6400474: T_Rex_Tex_RigAndModel_13_1:Top
+    6400476: T_Rex_Tex_RigAndModel_13_1:Top 1
+    6400478: T_Rex_Tex_RigAndModel_13_1:Top 2
+    6400480: T_Rex_Tex_RigAndModel_13_1:Top 3
     7400000: Take 001
     9500000: //RootNode
     10800000: ambientLight1
@@ -1571,11 +1812,11 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
-    importVisibility: 1
+    addColliders: 1
+    importVisibility: 0
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
