@@ -114,6 +114,7 @@ public class Mover : NetworkBehaviour {
             //controls transformations
             _characterRigid.MovePosition(transform.localPosition + transform.TransformDirection(new Vector3(0 , 0, _forward)
                 ) * controller.moveSpeed * Time.deltaTime);
+            print(_characterRigid.velocity);
 
             //controls rotation
             _newRotate = Mathf.Atan2(controller.device.GetAxis().y, (controller.device.GetAxis().x * -1)) * Mathf.Rad2Deg;
@@ -136,6 +137,7 @@ public class Mover : NetworkBehaviour {
             {
                 _characterRigid.MovePosition(transform.localPosition + transform.TransformDirection
                 (new Vector3(controller.touchSpot.x, 0, controller.touchSpot.y)) * controller.moveSpeed * Time.deltaTime);
+                print(_characterRigid.velocity);
             }
 
         }

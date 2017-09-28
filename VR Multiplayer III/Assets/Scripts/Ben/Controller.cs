@@ -140,6 +140,7 @@ public class Controller : MonoBehaviour {
         if(meleeMode)
         {
             BaseMelee.ReleaseMeleeAttack();
+            SoundEngine_JR.meleeSound();
         }
 
     }
@@ -155,6 +156,7 @@ public class Controller : MonoBehaviour {
         {
             if(Shoot.shooter != null)
                 Shoot.shooter();
+            SoundEngine_JR.shootSound();
         }
     }
 
